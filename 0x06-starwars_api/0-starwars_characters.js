@@ -6,7 +6,7 @@ apiRequest.get('https://swapi-api.alx-tools.com/api/films/' + process.argv[2], (
   if (err) console.log(err);
 
   if (req) {
-    const data = JSON.parse(req);
+    const data = JSON.parse(res);
 
     for (const x of data.xs) {
       apiRequest.get(x, (err1, req1, res1) => {
