@@ -1,21 +1,45 @@
 #!/usr/bin/node
 // stringify movie characters
 
-const apiRequest = require('request');
-apiRequest.get('https://swapi-api.alx-tools.com/api/films/' + process.argv[2], (err, req, res) => {
-  if (err) console.log(err);
+const request = require('request');
+const arg = process.argv[2];
 
-  if (req) {
-    const data = JSON.parse(res);
+async function resUrl(dataUrl) {
+  return new Promise(function(resolve, reject) {
+    request(dataUrl, function (err, res, body){
+      resolve(JSON.parse(body).name);
+      if(err) throw err;
+    });
+  });
+}
 
-    for (const character of data.characters) {
-      apiRequest.get(character, (err1, req1, res1) => {
-        if (err1) console.log(err1);
-        if (req1) {
-          const names = JSON.parse(res1);
-          console.log(names.name);
-        }
-      });
-    }
+async function chars() {
+  return new Promise(function(resolve, reject){
+    request(`https://swapi-api.alx-tools.com/api/films/${arg}`, function(err, res, bod){
+      resolve(JSON.parse(bod).characters);
+      if(err) throw err;
+    });
+  });
+}
+
+async function names() {
+  const mychars = await chars();
+  for(let i = 0; i < mychars.length; i++){
+    console.log(await resUrl(mychars[i]))
   }
-});
+}
+
+names();
+
+
+
+
+
+
+
+
+
+
+
+
+
