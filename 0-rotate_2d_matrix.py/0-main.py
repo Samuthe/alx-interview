@@ -13,9 +13,3 @@ if __name__ == "__main__":
 
     rotate_2d_matrix(matrix)
     print(matrix)
-
-
-# matrix = rotate_2d_matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-
-# for i in matrix:
-#     print(i)
