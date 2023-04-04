@@ -60,6 +60,7 @@ def isWinner(x, nums):
         player = "m"
         while times <= x:
             prime = getPrime(ints)
+
             # A win for the other player
             # when no more prime numbers exist
             # print(f"{player} picks {prime}")
@@ -69,6 +70,7 @@ def isWinner(x, nums):
                 else:
                     m_wins += 1
                 break
+
             # remove prime number
             # print(f"{player} removes {prime}")
             removePrimeNo(ints, prime)
