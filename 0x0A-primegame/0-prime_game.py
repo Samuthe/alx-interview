@@ -28,7 +28,7 @@ def isWinner(x, nums):
         return "Maria"
     return "Ben"
 
-#!/usr/bin/python3
+# !/usr/bin/python3
 # """
 # Module 0-prime_game
 # """
